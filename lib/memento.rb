@@ -20,8 +20,8 @@ module Memento
     end
 
     def start(user_or_id)
-      user = user_or_id.is_a?(User) ? user_or_id : User.where(:id => user_or_id).first
-      self.session = user ? Memento::Session.new(:user => user) : nil
+      user_id = user_or_id.is_a?(Integer) ? user_or_id : user.id
+      self.session = user_id ? Memento::Session.new(:user_id => user_id) : nil
     end
 
     def stop

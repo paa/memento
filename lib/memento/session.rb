@@ -4,11 +4,10 @@ module Memento
 
     has_many :states, -> { order "id DESC" },
              :class_name => "Memento::State", :dependent => :delete_all
-    belongs_to :user
 
     # attr_accessible nil
 
-    validates_presence_of :user
+    validates_presence_of :user_id
 
     def add_state(action_type, record)
       states.store(action_type, record)
